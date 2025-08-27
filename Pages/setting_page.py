@@ -65,7 +65,7 @@ class SettingPage(tk.Frame):
             width=20,
             height=2
         )
-        self.start_button.place(relx=0.5, rely=0.8, anchor="center")
+        self.language.place(relx=0.5, rely=0.8, anchor="center")
 
 
         self.start_button = tk.Button(
