@@ -58,7 +58,8 @@ class SettingPage(tk.Frame):
             bg="#129757",
             command = lambda: (save_settings(self.settings),
                                controller.geometry(self.settings["windows_size"]),
-                               setattr(controller, "language",self.settings["language"])
+                               self.controller.language.set(self.settings["language"]),
+                               setattr(controller.logic, "image_path",f"images/{self.controller.language.get().lower()}_keyboard.jpg")
                                ),
             width=20,
             height=2

@@ -11,7 +11,7 @@ class App(tk.Tk):
         super().__init__()
         self.windows_size = settings["windows_size"]
         self.difficulty = settings["difficulty"]
-        self.language = settings["language"]
+        self.language = tk.StringVar(value=settings["language"])
         self.configure(bg="#7be5b2")
         self.title("SpeedTyping")
         self.geometry(self.windows_size)

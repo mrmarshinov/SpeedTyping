@@ -18,10 +18,7 @@ class GamePage(tk.Frame):
             text="level 1",
             font=("Arial", 16),
             bg="#129757",
-            command = lambda: (
-                controller.logic.refresh(1),
-                controller.show_frame(list(controller.frames.keys())[1])
-            ),
+            command = lambda: self.choose_lvl(1),
             width=7,
             height=2
         )
@@ -32,10 +29,7 @@ class GamePage(tk.Frame):
             text="level 2",
             font=("Arial", 16),
             bg="#129757",
-            command = lambda: (
-                controller.logic.refresh(2),
-                controller.show_frame(list(controller.frames.keys())[1])
-            ),
+            command = lambda: self.choose_lvl(2),
             width=7,
             height=2
         )
@@ -46,10 +40,7 @@ class GamePage(tk.Frame):
             text="level 3",
             font=("Arial", 16),
             bg="#129757",
-            command = lambda: (
-                controller.logic.refresh(3),
-                controller.show_frame(list(controller.frames.keys())[1])
-            ),
+            command = lambda: self.choose_lvl(3),
             width=7,
             height=2
         )
@@ -60,10 +51,7 @@ class GamePage(tk.Frame):
             text="level 4",
             font=("Arial", 16),
             bg="#129757",
-            command = lambda: (
-                controller.logic.refresh(4),
-                controller.show_frame(list(controller.frames.keys())[1])
-            ),
+            command = lambda: self.choose_lvl(4),
             width=7,
             height=2
         )
@@ -74,10 +62,7 @@ class GamePage(tk.Frame):
             text="level 5",
             font=("Arial", 16),
             bg="#129757",
-            command = lambda: (
-                controller.logic.refresh(1),
-                controller.show_frame(list(controller.frames.keys())[1])
-            ),
+            command = lambda : self.choose_lvl(5),
             width=7,
             height=2
         )
@@ -88,10 +73,7 @@ class GamePage(tk.Frame):
             text="level 6",
             font=("Arial", 16),
             bg="#129757",
-            command = lambda: (
-                controller.logic.refresh(6),
-                controller.show_frame(list(controller.frames.keys())[1])
-            ),
+            command = lambda: self.choose_lvl(6),
             width=7,
             height=2
         )
@@ -102,10 +84,7 @@ class GamePage(tk.Frame):
             text="level 7",
             font=("Arial", 16),
             bg="#129757",
-            command = lambda: (
-                controller.logic.refresh(7),
-                controller.show_frame(list(controller.frames.keys())[1])
-            ),
+            command = lambda: self.choose_lvl(7),
             width=7,
             height=2
         )
@@ -116,10 +95,7 @@ class GamePage(tk.Frame):
             text="level 8",
             font=("Arial", 16),
             bg="#129757",
-            command = lambda: (
-                controller.logic.refresh(8),
-                controller.show_frame(list(controller.frames.keys())[1])
-            ),
+            command = lambda: self.choose_lvl(8),
             width=7,
             height=2
         )
@@ -130,10 +106,7 @@ class GamePage(tk.Frame):
             text="level 9",
             font=("Arial", 16),
             bg="#129757",
-            command = lambda: (
-                controller.logic.refresh(9),
-                controller.show_frame(list(controller.frames.keys())[1])
-            ),
+            command = lambda: self.choose_lvl(9),
             width=7,
             height=2
         )
@@ -144,10 +117,7 @@ class GamePage(tk.Frame):
             text="level 10",
             font=("Arial", 16),
             bg="#129757",
-            command = lambda: (
-                controller.logic.refresh(10),
-                controller.show_frame(list(controller.frames.keys())[1])
-            ),
+            command = lambda: self.choose_lvl(10),
             width=7,
             height=2
         )
@@ -160,3 +130,7 @@ class GamePage(tk.Frame):
             bg="#129757",
             command = lambda: controller.show_frame(list(controller.frames.keys())[0]))
         self.start_button.place(relx=0.9, rely=0.9, anchor="center")
+
+    def choose_lvl(self,lvl):
+        self.controller.logic.refresh(lvl),
+        self.controller.show_frame(list(self.controller.frames.keys())[1])

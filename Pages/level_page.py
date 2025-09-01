@@ -9,10 +9,10 @@ class LevelPage(tk.Frame):
         self.title = tk.Label(
             self,
             textvariable=controller.logic.current_line_var,
-            font=("Arial", 20),
+            font=('Courier New', 25),
             bg="#7be5b2", fg="black"
         )
-        self.title.place(relx=0.5, rely=0.6, anchor="center")
+        self.title.place(relx=0.5, rely=0.25, anchor="center")
 
         self.error_counter = tk.Label(
             self,
@@ -27,19 +27,23 @@ class LevelPage(tk.Frame):
             text="Main menu",
             font=("Arial", 16),
             bg="#129757",
-            command = lambda: controller.show_frame(list(controller.frames.keys())[0]))
+            command = lambda: (controller.show_frame(list(controller.frames.keys())[0]),
+                               self.text.delete("1.0","end"),
+                               self.errors_var.set(f"Count Errors: 0"))
+        )
         self.start_button.place(relx=0.9, rely=0.9, anchor="center")
 
         self.text = tk.Text(
             self,
-            width=40,
+            width=1,
             height=1,
-            font=('Arial',18),
+            font=('Courier New', 25),
             bg="white",
             fg="black"
         )
         self.text.focus_set()
-        self.text.place(relx=0.5, rely=0.7, anchor="center")
+        self.controller.logic.current_line_var.trace_add("write", self.update_text_width)
+        self.text.place(relx=0.5, rely=0.35, anchor="center")
         self.text.bind("<KeyRelease>", self.on_key)
 
 
@@ -55,7 +59,9 @@ class LevelPage(tk.Frame):
         if len(typed) >= len(self.controller.logic.current_line_var.get()):
             self.text.delete("1.0","end")
             self.controller.logic.len_control(typed)
-            self.title.config(text=self.controller.logic.current_line_var)
         else:
             self.controller.logic.len_control(typed)
-            self.title.config(text=self.controller.logic.current_line_var)
+
+    def update_text_width(self, *args):
+        line_length = len(self.controller.logic.current_line_var.get())
+        self.text.config(width=line_length)
